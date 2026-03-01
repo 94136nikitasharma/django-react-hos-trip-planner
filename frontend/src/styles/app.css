@@ -1,0 +1,270 @@
+:root {
+  --ink: #173124;
+  --paper: #f6f7f1;
+  --accent: #1f6a40;
+  --accent-2: #b2462d;
+  --card: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 15% 20%, #dde8ce, transparent 35%), linear-gradient(140deg, #f3f4ea 0%, #eceee4 55%, #e0e4d4 100%);
+}
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.hero {
+  background: linear-gradient(120deg, #1e3f2e 0%, #275a40 60%, #3d7a4b 100%);
+  color: #ecf5df;
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(23, 49, 36, 0.22);
+}
+
+.hero h1 {
+  margin: 0 0 10px;
+  font-size: clamp(1.4rem, 2.5vw, 2.1rem);
+}
+
+.hero p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.layout {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #d3d8cb;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.trip-form {
+  display: grid;
+  gap: 12px;
+}
+
+.trip-form label {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.trip-form input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #c4c9bc;
+  font-size: 0.95rem;
+}
+
+button {
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #7d8f7d;
+}
+
+.error {
+  color: #a21717;
+  font-weight: 700;
+}
+
+.summary-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.stat {
+  border: 1px solid #dbe0d1;
+  border-radius: 8px;
+  padding: 10px;
+  background: #f9fbf4;
+}
+
+.label {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #566255;
+}
+
+.value {
+  margin: 5px 0 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.stops {
+  margin: 10px 0 0;
+  padding-left: 18px;
+}
+
+.assumptions {
+  background: linear-gradient(120deg, #f9fbf4 0%, #f1f7ec 100%);
+}
+
+.assumptions ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+}
+
+.route-map-wrap {
+  display: grid;
+  gap: 8px;
+}
+
+.route-map {
+  width: 100%;
+  border: 1px solid #cdd5c0;
+  border-radius: 10px;
+}
+
+.map-note {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #5f6457;
+}
+
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  font-size: 0.82rem;
+  color: #33463a;
+}
+
+.map-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot.start {
+  background: #1d5eb8;
+}
+
+.dot.pickup {
+  border-radius: 2px;
+  background: #8d2fb2;
+}
+
+.dot.dropoff {
+  background: #1f6a40;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.dot.stop {
+  background: #b2462d;
+}
+
+.logs {
+  display: grid;
+  gap: 18px;
+}
+
+.log-sheet {
+  border: 1px solid #bcc8aa;
+  border-radius: 10px;
+  padding: 12px;
+  background: linear-gradient(180deg, #fff 0%, #fbfcf8 100%);
+}
+
+.log-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid #d9e0ce;
+  padding-bottom: 6px;
+}
+
+.log-header-top h3 {
+  font-size: 2rem;
+}
+
+.log-sheet h3,
+.log-sheet p {
+  margin: 0;
+}
+
+.log-meta {
+  margin-top: 8px;
+  display: grid;
+  gap: 6px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  font-size: 0.86rem;
+}
+
+.log-meta span {
+  font-weight: 700;
+}
+
+.log-grid {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.log-recap {
+  margin-top: 8px;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  font-size: 0.85rem;
+}
+
+.log-recap span {
+  border: 1px solid #d4ddc6;
+  border-radius: 6px;
+  padding: 6px 8px;
+  background: #f8faf4;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .log-meta,
+  .log-recap {
+    grid-template-columns: 1fr 1fr;
+  }
+}
