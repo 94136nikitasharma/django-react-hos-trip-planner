@@ -3,7 +3,7 @@
 Production-style full-stack submission for the Spotter AI Full Stack Developer assessment.
 
 ## Live Demo
-- Frontend (Vercel): [https://django-react-hos-trip-pl-git-f8a6a6-94136nikitasharmas-projects.vercel.app](https://django-react-hos-trip-pl-git-f8a6a6-94136nikitasharmas-projects.vercel.app)
+- Frontend (Vercel): [django-react-hos-trip-pl-git-f8a6a6-94136nikitasharmas-projects.vercel.app](django-react-hos-trip-pl-git-f8a6a6-94136nikitasharmas-projects.vercel.app)
 - Backend API (Render): [https://django-react-hos-trip-planner.onrender.com](https://django-react-hos-trip-planner.onrender.com)
 
 ## What This Project Solves
