@@ -163,5 +163,5 @@ curl -i -X POST http://127.0.0.1:8001/api/plan-trip \
 
 ## Submission Links
 - Live App: [https://django-react-hos-trip-pl-git-f8a6a6-94136nikitasharmas-projects.vercel.app](https://django-react-hos-trip-pl-git-f8a6a6-94136nikitasharmas-projects.vercel.app)
-- Loom Video: `<add loom URL>`
+
 - GitHub Repo: [https://github.com/94136nikitasharma/django-react-hos-trip-planner](https://github.com/94136nikitasharma/django-react-hos-trip-planner)
