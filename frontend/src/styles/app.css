@@ -212,9 +212,9 @@ button:disabled {
 .timeline::before {
   content: "";
   position: absolute;
-  left: 7px;
-  top: 4px;
-  bottom: 6px;
+  left: 17px;
+  top: 10px;
+  bottom: 10px;
   width: 2px;
   background: #d7e1ca;
 }
