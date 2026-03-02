@@ -27,6 +27,8 @@ export default function RouteMap({ route, stops, locations }) {
   const end = coordinates.length ? coordinates[coordinates.length - 1] : null;
   const pickup = locations?.pickup || stops?.find((stop) => stop.reason === "Pickup" && typeof stop.lon === "number" && typeof stop.lat === "number");
   const dropoff = locations?.dropoff || stops?.find((stop) => stop.reason === "Dropoff" && typeof stop.lon === "number" && typeof stop.lat === "number");
+  const fuelStops = stops?.filter((stop) => stop.reason === "Fuel stop" && typeof stop.lon === "number" && typeof stop.lat === "number") || [];
+  const hosStops = stops?.filter((stop) => stop.reason !== "Fuel stop" && stop.reason !== "Pickup" && stop.reason !== "Dropoff" && typeof stop.lon === "number" && typeof stop.lat === "number") || [];
 
   return (
     <div className="route-map-wrap">
@@ -38,21 +40,19 @@ export default function RouteMap({ route, stops, locations }) {
         {pickup && <rect x={x(pickup.lon) - 1.5} y={y(pickup.lat) - 1.5} width="3" height="3" fill="#8d2fb2" />}
         {dropoff && <polygon points={`${x(dropoff.lon)},${y(dropoff.lat) - 1.9} ${x(dropoff.lon) - 1.9},${y(dropoff.lat) + 1.7} ${x(dropoff.lon) + 1.9},${y(dropoff.lat) + 1.7}`} fill="#1f6a40" />}
         {end && <circle cx={x(end[0])} cy={y(end[1])} r="1.3" fill="#1f6a40" opacity="0.35" />}
-        {stops?.map((stop, idx) => (
-          typeof stop.lon === "number" && typeof stop.lat === "number" ? (
-            <g key={`${stop.reason}-${idx}`}>
-              {stop.reason !== "Pickup" && stop.reason !== "Dropoff" ? (
-                <circle cx={x(stop.lon)} cy={y(stop.lat)} r="1.2" fill="#b2462d" />
-              ) : null}
-            </g>
-          ) : null
+        {fuelStops.map((stop, idx) => (
+          <circle key={`fuel-${idx}`} cx={x(stop.lon)} cy={y(stop.lat)} r="1.2" fill="#d48a1f" />
+        ))}
+        {hosStops.map((stop, idx) => (
+          <circle key={`hos-${idx}`} cx={x(stop.lon)} cy={y(stop.lat)} r="1.2" fill="#b2462d" />
         ))}
       </svg>
       <div className="map-legend">
         <span><i className="dot start"></i>Start</span>
         <span><i className="dot pickup"></i>Pickup</span>
         <span><i className="dot dropoff"></i>Dropoff</span>
-        <span><i className="dot stop"></i>Break/Fuel/HOS Stop</span>
+        <span><i className="dot hos"></i>Break/HOS Stop</span>
+        <span><i className="dot fuel"></i>Fuel Stop</span>
       </div>
       <p className="map-note">Free route source: OpenStreetMap Nominatim + OSRM.</p>
     </div>

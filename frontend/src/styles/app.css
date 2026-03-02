@@ -1,8 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap");
+
 :root {
-  --ink: #173124;
-  --paper: #f6f7f1;
-  --accent: #1f6a40;
+  --ink: #162d25;
+  --paper: #f7f8f2;
+  --accent: #175a37;
   --accent-2: #b2462d;
+  --glow: #dbe8c6;
   --card: #ffffff;
 }
 
@@ -12,9 +15,12 @@
 
 body {
   margin: 0;
-  font-family: "Trebuchet MS", "Gill Sans", sans-serif;
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
   color: var(--ink);
-  background: radial-gradient(circle at 15% 20%, #dde8ce, transparent 35%), linear-gradient(140deg, #f3f4ea 0%, #eceee4 55%, #e0e4d4 100%);
+  background:
+    radial-gradient(circle at 8% 12%, #d8e8c7, transparent 40%),
+    radial-gradient(circle at 90% 10%, #e4edd5, transparent 35%),
+    linear-gradient(140deg, #f5f6ef 0%, #eef1e6 55%, #e2e7d7 100%);
 }
 
 .page {
@@ -24,16 +30,30 @@ body {
 }
 
 .hero {
-  background: linear-gradient(120deg, #1e3f2e 0%, #275a40 60%, #3d7a4b 100%);
+  background: linear-gradient(120deg, #143626 0%, #1c5a39 55%, #3b8652 100%);
   color: #ecf5df;
-  padding: 24px;
-  border-radius: 14px;
-  box-shadow: 0 10px 24px rgba(23, 49, 36, 0.22);
+  padding: 28px;
+  border-radius: 18px;
+  box-shadow: 0 16px 30px rgba(23, 49, 36, 0.24);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto -10% -65% auto;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(234, 245, 219, 0.24), transparent 72%);
 }
 
 .hero h1 {
   margin: 0 0 10px;
+  font-family: "Sora", sans-serif;
   font-size: clamp(1.4rem, 2.5vw, 2.1rem);
+  letter-spacing: 0.2px;
 }
 
 .hero p {
@@ -50,9 +70,17 @@ body {
 
 .card {
   background: var(--card);
-  border-radius: 12px;
-  padding: 16px;
-  border: 1px solid #d3d8cb;
+  border-radius: 14px;
+  padding: 18px;
+  border: 1px solid #d3dac8;
+  box-shadow: 0 6px 16px rgba(21, 50, 35, 0.08);
+  animation: rise 360ms ease-out both;
+}
+
+.card h2,
+.card h3 {
+  font-family: "Sora", sans-serif;
+  letter-spacing: 0.1px;
 }
 
 .full-width {
@@ -71,20 +99,33 @@ body {
 }
 
 .trip-form input {
-  padding: 10px;
+  padding: 11px;
   border-radius: 8px;
   border: 1px solid #c4c9bc;
   font-size: 0.95rem;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.trip-form input:focus {
+  border-color: #4f8b63;
+  outline: none;
+  box-shadow: 0 0 0 3px #e7f0df;
 }
 
 button {
   border: 0;
   border-radius: 10px;
   padding: 12px 14px;
-  background: var(--accent);
+  background: linear-gradient(120deg, #1d653e 0%, #1f7946 100%);
   color: #fff;
   font-weight: 700;
   cursor: pointer;
+  transition: transform 110ms ease, box-shadow 110ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(25, 94, 55, 0.22);
 }
 
 button:disabled {
@@ -127,7 +168,8 @@ button:disabled {
 }
 
 .assumptions {
-  background: linear-gradient(120deg, #f9fbf4 0%, #f1f7ec 100%);
+  background: linear-gradient(120deg, #fbfdf7 0%, #f2f8eb 100%);
+  border-color: #cddabc;
 }
 
 .assumptions ul {
@@ -193,6 +235,14 @@ button:disabled {
   background: #b2462d;
 }
 
+.dot.hos {
+  background: #b2462d;
+}
+
+.dot.fuel {
+  background: #d48a1f;
+}
+
 .logs {
   display: grid;
   gap: 18px;
@@ -202,7 +252,7 @@ button:disabled {
   border: 1px solid #bcc8aa;
   border-radius: 10px;
   padding: 12px;
-  background: linear-gradient(180deg, #fff 0%, #fbfcf8 100%);
+  background: linear-gradient(180deg, #fff 0%, #fdfef9 100%);
 }
 
 .log-header-top {
@@ -252,6 +302,17 @@ button:disabled {
   border-radius: 6px;
   padding: 6px 8px;
   background: #f8faf4;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 900px) {
