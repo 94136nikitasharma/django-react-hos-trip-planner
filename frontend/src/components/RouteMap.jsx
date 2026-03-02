@@ -41,7 +41,13 @@ export default function RouteMap({ route, stops, locations }) {
         {dropoff && <polygon points={`${x(dropoff.lon)},${y(dropoff.lat) - 1.9} ${x(dropoff.lon) - 1.9},${y(dropoff.lat) + 1.7} ${x(dropoff.lon) + 1.9},${y(dropoff.lat) + 1.7}`} fill="#1f6a40" />}
         {end && <circle cx={x(end[0])} cy={y(end[1])} r="1.3" fill="#1f6a40" opacity="0.35" />}
         {fuelStops.map((stop, idx) => (
-          <circle key={`fuel-${idx}`} cx={x(stop.lon)} cy={y(stop.lat)} r="1.2" fill="#d48a1f" />
+          <polygon
+            key={`fuel-${idx}`}
+            points={`${x(stop.lon)},${y(stop.lat) - 1.6} ${x(stop.lon) - 1.6},${y(stop.lat)} ${x(stop.lon)},${y(stop.lat) + 1.6} ${x(stop.lon) + 1.6},${y(stop.lat)}`}
+            fill="#f2b705"
+            stroke="#735700"
+            strokeWidth="0.3"
+          />
         ))}
         {hosStops.map((stop, idx) => (
           <circle key={`hos-${idx}`} cx={x(stop.lon)} cy={y(stop.lat)} r="1.2" fill="#b2462d" />

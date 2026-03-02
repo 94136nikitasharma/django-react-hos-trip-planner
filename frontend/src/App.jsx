@@ -17,6 +17,13 @@ const assumptions = [
   "Fueling is modeled every 1,000 miles."
 ];
 
+const summaryIcons = {
+  Distance: "🛣",
+  "Driving Time": "⏱",
+  "Fuel Stops": "⛽",
+  "ETA (UTC)": "📍"
+};
+
 function App() {
   const [form, setForm] = useState(initialForm);
   const [loading, setLoading] = useState(false);
@@ -75,6 +82,7 @@ function App() {
   return (
     <div className="page">
       <header className="hero">
+        <div className="brand-tag">Spotter AI Assessment</div>
         <h1>Trip Planner + ELD Daily Logs</h1>
         <p>Generate route guidance, required stops, and FMCSA-style duty logs from one trip request.</p>
       </header>
@@ -108,6 +116,7 @@ function App() {
               />
             </label>
             <button type="submit" disabled={loading}>{loading ? "Planning..." : "Generate Plan"}</button>
+            {loading && <div className="loading-bar" aria-hidden="true"></div>}
           </form>
           {error && <p className="error">{error}</p>}
         </section>
@@ -131,18 +140,21 @@ function App() {
               <div className="summary-grid">
                 {summaryItems.map(([label, value]) => (
                   <article key={label} className="stat">
-                    <p className="label">{label}</p>
+                    <p className="label"><span>{summaryIcons[label] || "•"}</span> {label}</p>
                     <p className="value">{value}</p>
                   </article>
                 ))}
               </div>
               <h3>Stops and Rests</h3>
-              <ul className="stops">
+              <ul className="stops timeline">
                 {result.stops.map((stop, index) => (
                   <li key={`${stop.reason}-${index}`}>
-                    <strong>{stop.reason}</strong>
-                    {stop.location ? ` at ${stop.location}` : ""}
-                    {stop.time_utc ? ` (${new Date(stop.time_utc).toLocaleString()})` : ""}
+                    <div className="timeline-dot" aria-hidden="true"></div>
+                    <div>
+                      <strong>{stop.reason}</strong>
+                      {stop.location ? ` at ${stop.location}` : ""}
+                      {stop.time_utc ? ` (${new Date(stop.time_utc).toLocaleString()})` : ""}
+                    </div>
                   </li>
                 ))}
               </ul>

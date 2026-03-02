@@ -49,6 +49,19 @@ body {
   background: radial-gradient(circle, rgba(234, 245, 219, 0.24), transparent 72%);
 }
 
+.brand-tag {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.25px;
+  text-transform: uppercase;
+  background: rgba(236, 245, 223, 0.2);
+  border: 1px solid rgba(236, 245, 223, 0.32);
+}
+
 .hero h1 {
   margin: 0 0 10px;
   font-family: "Sora", sans-serif;
@@ -132,6 +145,23 @@ button:disabled {
   background: #7d8f7d;
 }
 
+.loading-bar {
+  height: 4px;
+  margin-top: 6px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #e4edd8;
+}
+
+.loading-bar::before {
+  content: "";
+  display: block;
+  width: 32%;
+  height: 100%;
+  background: linear-gradient(90deg, #2e7e4e, #97c17b);
+  animation: slide 900ms linear infinite;
+}
+
 .error {
   color: #a21717;
   font-weight: 700;
@@ -144,16 +174,20 @@ button:disabled {
 }
 
 .stat {
-  border: 1px solid #dbe0d1;
+  border: 1px solid #d4ddc7;
   border-radius: 8px;
   padding: 10px;
-  background: #f9fbf4;
+  background: linear-gradient(180deg, #fcfdf8 0%, #f4f7ed 100%);
 }
 
 .label {
   margin: 0;
-  font-size: 0.78rem;
-  color: #566255;
+  font-size: 0.76rem;
+  color: #4b5b4d;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .value {
@@ -165,6 +199,44 @@ button:disabled {
 .stops {
   margin: 10px 0 0;
   padding-left: 18px;
+}
+
+.timeline {
+  list-style: none;
+  padding-left: 0;
+  position: relative;
+  display: grid;
+  gap: 10px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 4px;
+  bottom: 6px;
+  width: 2px;
+  background: #d7e1ca;
+}
+
+.timeline li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: #fbfcf8;
+  border: 1px solid #dce4cf;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  margin-top: 3px;
+  background: #316c47;
+  box-shadow: 0 0 0 3px #eff5e7 inset;
+  flex-shrink: 0;
 }
 
 .assumptions {
@@ -240,7 +312,10 @@ button:disabled {
 }
 
 .dot.fuel {
-  background: #d48a1f;
+  background: #f2b705;
+  border-radius: 0;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  border: 1px solid #735700;
 }
 
 .logs {
@@ -312,6 +387,15 @@ button:disabled {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(-20%);
+  }
+  to {
+    transform: translateX(300%);
   }
 }
 
